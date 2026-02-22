@@ -1,0 +1,31 @@
+{
+  "name": "usaint-lib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "!dist/**/*.tsbuildinfo"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx example.ts",
+    "prepublishOnly": "pnpm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@10.24.0",
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "fetch-cookie": "^3.2.0",
+    "tough-cookie": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.0",
+    "@types/tough-cookie": "^4.0.5",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

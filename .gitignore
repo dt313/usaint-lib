@@ -1,0 +1,14 @@
+assets/
+dist/
+node_modules/
+*.har
+test.ts
+
+# Misc
+.env
+.idea/
+.vscode/
+
+sap_architecture_ko.md
+
+*.tgz
