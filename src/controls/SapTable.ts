@@ -168,7 +168,6 @@ export class SapTable extends SapControl {
             const nextIndex = allRows.length + 1;
             await this.scrollVertical(nextIndex);
 
-            // Re-fetch table từ updated DOM rồi gọi getVisibleRows trên instance mới
             const freshTable = this.client.getControlById<SapTable>(this.id);
             if (!freshTable) break;
 
