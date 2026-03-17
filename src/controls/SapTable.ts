@@ -165,19 +165,23 @@ export class SapTable extends SapControl {
         }
 
         while (allRows.length < totalRows) {
-            const nextIndex = allRows.length;
+            const nextIndex = allRows.length + 1;
             await this.scrollVertical(nextIndex);
 
-            visible = this.getVisibleRows();
+            // Re-fetch table từ updated DOM rồi gọi getVisibleRows trên instance mới
+            const freshTable = this.client.getControlById<SapTable>(this.id);
+            if (!freshTable) break;
 
-            if (visible.rows.length === 0) {
-                break;
-            }
+            visible = freshTable.getVisibleRows();
+            if (visible.rows.length === 0) break;
 
+            const prevSize = allRows.length;
             for (const row of visible.rows) {
                 if (allRows.length >= totalRows) break;
                 allRows.push({ index: allRows.length, cells: row.cells });
             }
+
+            if (allRows.length === prevSize) break;
         }
 
         return { headers, rows: allRows };
